@@ -26,8 +26,12 @@ jobs:
         if: steps.filter.outputs.puml == 'true'
         with:
             args: -v -tpng ${{ steps.filter.outputs.puml_files }}
-      - name: Push Local Changes
+      - name: Create Pull Request if PNG(s) were produced
         if: steps.filter.outputs.puml == 'true'
-        uses:  stefanzweifel/git-auto-commit-action@v4
-        with: 
-          commit_message: "Generate PNG images for PlantUML diagrams" 
+        uses: peter-evans/create-pull-request@v3
+        with:
+          commit-message: Code formatting tool on ${{ github.head_ref }}
+          title: PlantUML PNG(s) for ${{ github.head_ref }}
+          body: Auto-generated PR with generated PlantUML PNG(s)
+          labels: automated pr
+          branch: plantuml-png/${{ github.head_ref }}            
