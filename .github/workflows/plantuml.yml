@@ -30,7 +30,7 @@ jobs:
         if: steps.filter.outputs.puml == 'true'
         uses: peter-evans/create-pull-request@v3
         with:
-          commit-message: Code formatting tool on ${{ github.head_ref }}
+          commit-message: PlantUML PNG(s) for ${{ github.head_ref }}
           title: PlantUML PNG(s) for ${{ github.head_ref }}
           body: Auto-generated PR with generated PlantUML PNG(s)
           labels: automated pr
