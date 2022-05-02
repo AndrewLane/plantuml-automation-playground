@@ -1,14 +1,14 @@
 @startuml
-Bob ->x Alice
-Bob -> Alice
-Bob ->> Alice
-Bob -\ Alice
-Bob \\- Alice
-Bob //-- Alice
+Bobby ->x Alice
+Bobby -> Alice
+Bobby ->> Alice
+Bobby -\ Alice
+Bobby \\- Alice
+Bobby //-- Alice
 
-Bob ->o Alice
-Bob o\\-- Alice
+Bobby ->o Alice
+Bobby o\\-- Alice
 
-Bob <-> Alice
-Bob <->o Alice
+Bobby <-> Alice
+Bobby <->o Alice
 @enduml
