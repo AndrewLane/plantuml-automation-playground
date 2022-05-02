@@ -20,11 +20,6 @@ jobs:
           filters: |
             puml:
             - '**.plantuml'
-      - name: Generate SVG Diagrams
-        uses: cloudbees/plantuml-github-action@master
-        if: steps.filter.outputs.puml == 'true'
-        with:
-            args: -v -tsvg ${{ steps.filter.outputs.puml_files }}
       - name: Generate PNG Diagrams
         uses: cloudbees/plantuml-github-action@master
         if: steps.filter.outputs.puml == 'true'
@@ -32,10 +27,6 @@ jobs:
             args: -v -tpng ${{ steps.filter.outputs.puml_files }}
       - name: Push Local Changes
         if: steps.filter.outputs.puml == 'true'
-        uses:  stefanzweifel/git-auto-commit-action@v4.1.2 
+        uses:  stefanzweifel/git-auto-commit-action@v4
         with: 
-          commit_user_name: "CI GitHub Action"
-          commit_user_email: "ci@mail.net"
-          commit_author: "CI GitHub Action <ci@mail.net>"
-          commit_message: "Generate SVG and PNG images for PlantUML diagrams" 
-          branch: ${{ github.head_ref }}
+          commit_message: "Generate PNG images for PlantUML diagrams" 
